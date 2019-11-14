@@ -45,6 +45,7 @@ Str::Str(const char* str) {
 	_Alloc(cap);
 	strcpy_s(val, cap, str);
 	val[len] = '\0';
+	cap = cap -  1;
 }
 
 Str::Str(const Str& str) {
@@ -53,6 +54,7 @@ Str::Str(const Str& str) {
     _Alloc(cap);
 	memcpy_s(val, len, str.val, len);
 	val[len] = '\0';
+	cap = cap - 1;
 }
 
 Str::Str(const Str& str, UINT pos, UINT length) {
@@ -67,6 +69,7 @@ Str::Str(const Str& str, UINT pos, UINT length) {
 	_Alloc(cap);
 	memcpy_s(val, len, str.val + pos, len);
 	val[len] = '\0';
+	cap = cap - 1;
 }
 
 Str::Str(const char* s, UINT n) {
@@ -80,6 +83,7 @@ Str::Str(const char* s, UINT n) {
 	_Alloc(cap);
 	memcpy_s(val, len, s, len);
 	val[len] = '\0';
+	cap = cap - 1;
 }
 
 /***********************  构造函数实现end  **********************/
@@ -165,6 +169,7 @@ void Str::resize(UINT n) {
 	if (n > cap) {
 		cap = NewAllocSize * (len / NewAllocSize + 1);
 		_recap();
+		cap = cap - 1;
 	}
 	else {
 	    val[n] = '\0';
@@ -182,6 +187,7 @@ void Str::pushback(char c) {
 	if (len > cap) {
 		cap = NewAllocSize * (len / NewAllocSize + 1);
 		_recap();
+		cap = cap - 1;
 	}
 	else {
 		val[len - 1] = c;
@@ -196,11 +202,9 @@ void Str::reserve(UINT n) {
 		}
 		_recap();
 	}
+	cap = cap - 1;
 }
-void Str::shrink_to_fit() {
-	cap = len;
-	_recap();
-}
+
 void Str::clear()noexcept {
 	len = 0;
 	val[len] = '\0';
@@ -226,6 +230,7 @@ Str& Str::append(const Str& str) {
 	if (len > cap) {
 		cap = NewAllocSize * (len / NewAllocSize + 1);
 		_recap();
+		cap = cap - 1;
 	}
 	memcpy(val + (len - str.len), str.val, str.len);
 	val[len] = '\0';
@@ -262,13 +267,14 @@ Str& Str::erase(UINT pos, UINT length) {
 }
 
 Str& Str::insert(UINT pos, const Str& str) {
-	if (pos >= len) {
+	if (pos > len) {
 		throw std::out_of_range("laobifeng");
 	}
 	len = len + str.len;
-	if (len >= cap) {
+	if (len > cap) {
 		cap = NewAllocSize * (len / NewAllocSize + 1);
 		_recap();
+		cap = cap - 1;
 	}
 
 	//插入位置后面的 len - pos 个字符后移 str.len

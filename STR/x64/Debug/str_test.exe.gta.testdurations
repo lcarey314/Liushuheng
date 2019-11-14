@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GtaTestDurations xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Executable>C:\Users\liu\Desktop\github\Liushuheng\STR\x64\Debug\Str_Test.exe</Executable>
+  <TestDurations>
+    <TestDuration Test="STR_TEST.modifyTest" Duration="1" />
+    <TestDuration Test="STR_TEST.modifyTest_1" Duration="1" />
+    <TestDuration Test="STR_TEST.modifyTest_2" Duration="1" />
+    <TestDuration Test="STR_TEST.StrBasicTest_1" Duration="1" />
+    <TestDuration Test="STR_TEST.StrModifyTest_1" Duration="1" />
+  </TestDurations>
+</GtaTestDurations>

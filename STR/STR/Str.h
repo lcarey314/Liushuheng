@@ -53,7 +53,6 @@ public:
 	void resize(UINT n);
 	void pushback(char c);
 	void reserve(UINT n = 0);
-	void shrink_to_fit();
 	void clear()noexcept;
 private:
 

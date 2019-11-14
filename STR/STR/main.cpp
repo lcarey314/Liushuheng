@@ -10,17 +10,8 @@ Des:
 using namespace std;
 
 int main() {
-	Str str = "abc";
-	cout << str.length()<<"append test" << '\n';
-	str.append("ssss");
-	cout << str.data() << str.size()<<"insert test"<<'\n';
-	str.insert(3, "ins");
-	cout << str.data();
-	UINT a = str.find("ss");  //abcinsssss  5
-	cout << '\n'<<a;
-    UINT b = str.rfind("ss");  //9
-	cout << '\n'<<b<<'\n';
-	str.clear();
-	cout << str.length();
-
+	Str str = "liu";
+	str.append("shu");
+	cout << str.compare("liushu");
+	
 }
